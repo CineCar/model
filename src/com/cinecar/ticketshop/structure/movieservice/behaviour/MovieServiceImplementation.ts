@@ -22,10 +22,10 @@ class MovieServiceImplementation implements MovieService{
     createMovieScreening(movieid: number, dateTime: Date): MovieScreening {
         throw new Error("Method not implemented.");
     }
-    deleteMovie(movieid: number): void {
+    deleteMovie(movieid: number): Promise<void> {
 
 
-        DatabaseConnectorImplementation.getSingleton().delete(movieid, DatabaseObjectType.Movie)
+        return DatabaseConnectorImplementation.getSingleton().delete(movieid, DatabaseObjectType.Movie);
 
     }
     deteteMovieScreening(moviescreeningid: number): void {

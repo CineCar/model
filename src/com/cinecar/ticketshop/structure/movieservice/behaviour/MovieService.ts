@@ -11,7 +11,7 @@ export interface MovieService  {
 
     createMovieScreening(movieid: number, dateTime: Date): MovieScreening;
 
-    deleteMovie(movieid: number): void;
+    deleteMovie(movieid: number): Promise<void>;
 
     deteteMovieScreening(moviescreeningid: number): void;
 
