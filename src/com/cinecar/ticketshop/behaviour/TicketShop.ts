@@ -2,36 +2,36 @@ import { Booking, Cart, MovieScreening, Movie } from "com.cinecar.objects";
 
 export interface TicketShop {
     // MISC
-    addTicketToCart(id: number, row: number): void;
+    addTicketToCart(id: number, row: number): Promise<void>;
 
-    cancelBooking(id: number): void;
+    cancelBooking(id: number): Promise<void>;
 
-    changeMovieInformation(id: number, name: string, duration: number): void;
+    changeMovieInformation(id: number, name: string, duration: number): Promise<Movie>;
 
-    changeMovieScreeningInformationInformation(id: number, dateTime: Date): void;
+    changeMovieScreeningInformationInformation(id: number, dateTime: Date): Promise<MovieScreening>;
 
-    checkoutCart(id: number, firstname: string, lastname: string): Booking;
+    checkoutCart(id: number, firstname: string, lastname: string): Promise<Booking>;
 
     // CREATE
-    createMovie(name: string, duration: number): Movie;
+    createMovie(name: string, duration: number): Promise<Movie>;
 
-    createMovieScreening(movieid: number, dateTime: Date): MovieScreening;
+    createMovieScreening(movieid: number, dateTime: Date): Promise<MovieScreening>;
 
     // DELETE
-    deleteMovie(movieid: number): void;
+    deleteMovie(movieid: number): Promise<void>;
 
-    deteteMovieScreening(moviescreeningid: number): void;
+    deleteMovieScreening(moviescreeningid: number): Promise<void>;
 
     //GETTERS
-    getBooking(): Booking;
+    getBooking(): Promise<Booking>;
 
-    getBookings(): Array<Booking>;
+    getBookings(): Promise<Array<Booking>>;
 
-    getCart(id: number): Cart;
+    getCart(id: number): Promise<Cart>;
 
-    getMovie(movieid: number): Movie;
+    getMovie(movieid: number): Promise<Movie>;
 
-    getMovies(): Array<Movie>;
+    getMovies(): Promise<Array<Movie>>;
 
-    getMovieScreenings(): Array<MovieScreening>;
+    getMovieScreenings(): Promise<Array<MovieScreening>>;
 }
