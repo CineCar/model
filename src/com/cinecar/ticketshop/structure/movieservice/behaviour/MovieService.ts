@@ -5,7 +5,7 @@ export interface MovieService  {
 
     changeMovieInformation(id: number, name: string, duration: number): Promise<Movie>;
 
-    changeMovieScreeningInformationInformation(id: number, dateTime: Date): Promise<MovieScreening>;
+    changeMovieScreeningInformation(id: number, dateTime: Date): Promise<MovieScreening>;
 
     createMovie(name: string, duration: number): Promise<Movie>;
 

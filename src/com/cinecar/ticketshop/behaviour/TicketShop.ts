@@ -1,14 +1,14 @@
-import { Booking, Cart, MovieScreening, Movie } from "com.cinecar.objects";
+import { Booking, Cart, MovieScreening, Movie, Ticket } from "com.cinecar.objects";
 
 export interface TicketShop {
     // MISC
-    addTicketToCart(id: number, row: number): Promise<void>;
+    addTicketToCart(id: number, ticket: Ticket): Promise<Cart>;
 
-    cancelBooking(id: number): Promise<void>;
+    cancelBooking(id: number): Promise<Booking>;
 
     changeMovieInformation(id: number, name: string, duration: number): Promise<Movie>;
 
-    changeMovieScreeningInformationInformation(id: number, dateTime: Date): Promise<MovieScreening>;
+    changeMovieScreeningInformation(id: number, dateTime: Date): Promise<MovieScreening>;
 
     checkoutCart(id: number, firstname: string, lastname: string): Promise<Booking>;
 
@@ -23,7 +23,7 @@ export interface TicketShop {
     deleteMovieScreening(moviescreeningid: number): Promise<void>;
 
     //GETTERS
-    getBooking(): Promise<Booking>;
+    getBooking(id: number): Promise<Booking>;
 
     getBookings(): Promise<Array<Booking>>;
 
