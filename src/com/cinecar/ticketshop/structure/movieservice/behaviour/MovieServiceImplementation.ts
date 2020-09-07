@@ -3,7 +3,24 @@ import { Movie, MovieScreening } from "com.cinecar.objects";
 
 import {  DatabaseConnectorImplementation, DatabaseObjectType } from "com.cinecar.databaseconnector";
 
-class MovieServiceImplementation implements MovieService{
+export class MovieServiceImplementation implements MovieService{
+
+    private static movieServiceImplementation: MovieServiceImplementation;
+
+
+
+    static getSingleton(): MovieServiceImplementation{
+
+        if(MovieServiceImplementation.movieServiceImplementation == null){
+            MovieServiceImplementation.movieServiceImplementation = new MovieServiceImplementation();
+        }
+
+        return MovieServiceImplementation.movieServiceImplementation;
+    }
+
+
+
+
     changeMovieInformation(id: number, name: string, duration: number): Promise<Movie> {
 
         let movie: Movie = new Movie();
