@@ -2,9 +2,9 @@ import { Booking, Cart, MovieScreening, Movie } from "com.cinecar.objects";
 
 export interface TicketShop {
     // MISC
-    addTicketToCart(id: number, row: number): Promise<void>;
+    addTicketToCart(id: number, row: number): Promise<Cart>;
 
-    cancelBooking(id: number): Promise<void>;
+    cancelBooking(id: number): Promise<Booking>;
 
     changeMovieInformation(id: number, name: string, duration: number): Promise<Movie>;
 
