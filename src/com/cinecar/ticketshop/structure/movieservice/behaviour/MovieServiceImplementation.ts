@@ -4,10 +4,19 @@ import { Movie, MovieScreening } from "com.cinecar.objects";
 import {  DatabaseConnectorImplementation, DatabaseObjectType } from "com.cinecar.databaseconnector";
 
 class MovieServiceImplementation implements MovieService{
-    changeMovieInformation(id: number, name: string, duration: number): Promise<void> {
-        throw new Error("Method not implemented.");
+    changeMovieInformation(id: number, name: string, duration: number): Promise<Movie> {
+
+        let movie: Movie = new Movie();
+        movie.setId(id);
+        movie.setName(name);
+        movie.setDuration(duration);
+
+        return <Promise<Movie>> DatabaseConnectorImplementation.getSingleton().update(movie, DatabaseObjectType.Movie);
+
+        
+
     }
-    changeMovieScreeningInformationInformation(id: number, dateTime: Date): Promise<void> {
+    changeMovieScreeningInformationInformation(id: number, dateTime: Date): Promise<MovieScreening> {
         throw new Error("Method not implemented.");
     }
     createMovie(name: string, duration: number): Promise<Movie>{

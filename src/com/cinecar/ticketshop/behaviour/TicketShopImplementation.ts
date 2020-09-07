@@ -10,11 +10,11 @@ export class TicketShopImplementation implements TicketShop {
         throw new Error("Method not implemented.");
     }
 
-    changeMovieInformation(id: number, string: any, duration: number): Promise<void> {
+    changeMovieInformation(id: number, string: any, duration: number): Promise<Movie> {
         throw new Error("Method not implemented.");
     }
 
-    changeMovieScreeningInformationInformation(id: number, dateTime: Date): Promise<void> {
+    changeMovieScreeningInformationInformation(id: number, dateTime: Date): Promise<MovieScreening> {
         throw new Error("Method not implemented.");
     }
 

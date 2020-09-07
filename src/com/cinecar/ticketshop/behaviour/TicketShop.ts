@@ -6,9 +6,9 @@ export interface TicketShop {
 
     cancelBooking(id: number): Promise<void>;
 
-    changeMovieInformation(id: number, name: string, duration: number): Promise<void>;
+    changeMovieInformation(id: number, name: string, duration: number): Promise<Movie>;
 
-    changeMovieScreeningInformationInformation(id: number, dateTime: Date): Promise<void>;
+    changeMovieScreeningInformationInformation(id: number, dateTime: Date): Promise<MovieScreening>;
 
     checkoutCart(id: number, firstname: string, lastname: string): Promise<Booking>;
 

@@ -3,9 +3,9 @@ import {  Movie, MovieScreening} from "com.cinecar.objects";
 export interface MovieService  {
 
 
-    changeMovieInformation(id: number, name: string, duration: number): Promise<void>;
+    changeMovieInformation(id: number, name: string, duration: number): Promise<Movie>;
 
-    changeMovieScreeningInformationInformation(id: number, dateTime: Date): Promise<void>;
+    changeMovieScreeningInformationInformation(id: number, dateTime: Date): Promise<MovieScreening>;
 
     createMovie(name: string, duration: number): Promise<Movie>;
 
