@@ -1,24 +1,66 @@
 import { BookingService } from "./BookingService";
-import { Booking, Cart } from "com.cinecar.objects";
+import { Booking, Cart, Ticket, Person } from "com.cinecar.objects";
+
+import { DatabaseConnectorImplementation, DatabaseObjectType } from "com.cinecar.databaseconnector";
 
 export class BookingServiceImplementation implements BookingService{
-    addTicketToCart(id: number, ticket: any): Promise<void> {
-        throw new Error("Method not implemented.");
+    async addTicketToCart(id: number, ticket: Ticket): Promise<Cart> {
+
+        let cart: Cart = <Cart> await DatabaseConnectorImplementation.getSingleton().get(id, DatabaseObjectType.Cart);
+
+
+        let cartTickets: Array<Ticket> = cart.getTickets();
+
+        cartTickets.push(ticket);
+
+        cart.setTickets(cartTickets);
+
+
+        return <Promise<Cart>> DatabaseConnectorImplementation.getSingleton().update(cart, DatabaseObjectType.Cart);
+
+
+        
+
+
     }
-    cancelBooking(id: number): Promise<void> {
-        throw new Error("Method not implemented.");
+    async cancelBooking(id: number): Promise<Booking> {
+
+        let booking:  Booking = <Booking> await DatabaseConnectorImplementation.getSingleton().get(id, DatabaseObjectType.Booking);
+
+        booking.setCancelled(true);
+
+        
+
+
+        return <Promise<Booking>> DatabaseConnectorImplementation.getSingleton().update(booking, DatabaseObjectType.Booking);
     }
-    checkoutCart(id: number, firstname: string, lastname: string): Promise<Booking> {
-        throw new Error("Method not implemented.");
+    async checkoutCart(id: number, firstname: string, lastname: string): Promise<Booking> {
+        let cart: Cart = <Cart> await DatabaseConnectorImplementation.getSingleton().get(id, DatabaseObjectType.Cart);
+        DatabaseConnectorImplementation.getSingleton().delete(id, DatabaseObjectType.Cart);
+
+        let person: Person = new Person();
+        person.setFirstname(firstname);
+        person.setLastname(lastname);
+
+
+
+
+        let booking: Booking = new Booking();
+        booking.setPerson(person);
+        booking.setTickets(cart.getTickets());
+
+        return <Promise<Booking>> DatabaseConnectorImplementation.getSingleton().create(booking, DatabaseObjectType.Booking);
+    
     }
     getBooking(id: number): Promise<Booking> {
-        throw new Error("Method not implemented.");
+        return <Promise<Booking>> DatabaseConnectorImplementation.getSingleton().get(id, DatabaseObjectType.Booking);
     }
     getBookings(): Promise<Array<Booking>> {
-        throw new Error("Method not implemented.");
+        return <Promise<Booking[]>> DatabaseConnectorImplementation.getSingleton().getAll(DatabaseObjectType.Booking);
     }
     getCart(id: number): Promise<Cart> {
-        throw new Error("Method not implemented.");
+        
+        return <Promise<Cart>> DatabaseConnectorImplementation.getSingleton().get(id, DatabaseObjectType.Cart);
     }
 
 }
