@@ -21,7 +21,7 @@ export class TicketShopImplementation implements TicketShop {
     }
 
     changeMovieScreeningInformation(id: number, dateTime: Date): Promise<MovieScreening> {
-        return MovieServiceImplementation.getSingleton().
+        return MovieServiceImplementation.getSingleton().changeMovieScreeningInformation(id, dateTime);
     }
 
     checkoutCart(id: number, firstname: string, lastname: string): Promise<Booking> {

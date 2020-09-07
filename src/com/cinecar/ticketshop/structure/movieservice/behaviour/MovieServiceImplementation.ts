@@ -33,7 +33,7 @@ export class MovieServiceImplementation implements MovieService{
         
 
     }
-    changeMovieScreeningInformationid: number, dateTime: Date): Promise<MovieScreening> {
+    changeMovieScreeningInformation (id: number, dateTime: Date): Promise<MovieScreening> {
 
         let movie: Movie = new Movie();
         movie.setId(id);
