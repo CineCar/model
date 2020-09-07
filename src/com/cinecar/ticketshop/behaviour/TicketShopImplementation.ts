@@ -25,46 +25,46 @@ export class TicketShopImplementation implements TicketShop {
     }
 
     checkoutCart(id: number, firstname: string, lastname: string): Promise<Booking> {
-        return BookingServiceImplementation.getSingleton().
+        return BookingServiceImplementation.getSingleton().checkoutCart(id, firstname, lastname);
     }
 
     createMovie(name: string, duration: number): Promise<Movie> {
-        return BookingServiceImplementation.getSingleton().
+        return MovieServiceImplementation.getSingleton().createMovie(name, duration);
     }
 
     createMovieScreening(movieid: number, dateTime: Date): Promise<MovieScreening> {
-        return BookingServiceImplementation.getSingleton().
+        return MovieServiceImplementation.getSingleton().createMovieScreening(movieid, dateTime);
     }
 
     deleteMovie(movieid: number): Promise<void> {
-        return BookingServiceImplementation.getSingleton().
+        return MovieServiceImplementation.getSingleton().deleteMovie(movieid);
     }
 
     deleteMovieScreening(moviescreeningid: number): Promise<void> {
-        return BookingServiceImplementation.getSingleton().
+        return MovieServiceImplementation.getSingleton().deleteMovieScreening(moviescreeningid);
     }
 
-    getBooking(): Promise<Booking> {
-        return BookingServiceImplementation.getSingleton().
+    getBooking(id: number): Promise<Booking> {
+        return BookingServiceImplementation.getSingleton().getBooking(id);
     }
 
     getBookings(): Promise<Booking[]> {
-        return BookingServiceImplementation.getSingleton().
+        return BookingServiceImplementation.getSingleton().getBookings();
     }
 
     getCart(id: number): Promise<Cart> {
-        return BookingServiceImplementation.getSingleton().
+        return BookingServiceImplementation.getSingleton().getCart(id);
     }
 
     getMovie(movieid: number): Promise<Movie> {
-        return BookingServiceImplementation.getSingleton().
+        return MovieServiceImplementation.getSingleton().getMovie(movieid);
     }
 
     getMovies(): Promise<Movie[]> {
-        return BookingServiceImplementation.getSingleton().
+        return MovieServiceImplementation.getSingleton().getMovies();
     }
 
     getMovieScreenings(): Promise<MovieScreening[]> {
-        return BookingServiceImplementation.getSingleton().
+        return MovieServiceImplementation.getSingleton().getMovieScreenings();
     }
 }

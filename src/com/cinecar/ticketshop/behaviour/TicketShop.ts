@@ -23,7 +23,7 @@ export interface TicketShop {
     deleteMovieScreening(moviescreeningid: number): Promise<void>;
 
     //GETTERS
-    getBooking(): Promise<Booking>;
+    getBooking(id: number): Promise<Booking>;
 
     getBookings(): Promise<Array<Booking>>;
 
