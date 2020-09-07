@@ -20,7 +20,17 @@ class MovieServiceImplementation implements MovieService{
         return <Promise<Movie>> DatabaseConnectorImplementation.getSingleton().create(movie, DatabaseObjectType.Movie);
     }
     createMovieScreening(movieid: number, dateTime: Date): Promise<MovieScreening> {
-        throw new Error("Method not implemented.");
+        const moviescreening: MovieScreening = new MovieScreening();
+
+        let movie: Movie = new Movie();
+        movie.setId(movieid);
+
+        moviescreening.setMovie(movie);
+        moviescreening.setDatetime(dateTime);
+
+        return <Promise<MovieScreening>>DatabaseConnectorImplementation.getSingleton().create(moviescreening, DatabaseObjectType.MovieScreening);
+
+        
     }
     deleteMovie(movieid: number): Promise<void> {
 
@@ -29,16 +39,16 @@ class MovieServiceImplementation implements MovieService{
 
     }
     deleteMovieScreening(moviescreeningid: number): Promise<void> {
-        throw new Error("Method not implemented.");
+        return DatabaseConnectorImplementation.getSingleton().delete(moviescreeningid, DatabaseObjectType.MovieScreening);
     }
     getMovie(movieid: number): Promise<Movie> {
-        throw new Error("Method not implemented.");
+        return <Promise<Movie>> DatabaseConnectorImplementation.getSingleton().get(movieid, DatabaseObjectType.Movie);
     }
     getMovies(): Promise<Movie[]> {
-        throw new Error("Method not implemented.");
+        return <Promise<Movie[]>> DatabaseConnectorImplementation.getSingleton().getAll(DatabaseObjectType.Movie);
     }
     getMovieScreenings(): Promise<MovieScreening[]> {
-        throw new Error("Method not implemented.");
+        return <Promise<MovieScreening[]>> DatabaseConnectorImplementation.getSingleton().getAll(DatabaseObjectType.MovieScreening);
     }
 
 
