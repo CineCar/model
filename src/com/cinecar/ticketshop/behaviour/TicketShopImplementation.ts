@@ -1,12 +1,15 @@
 import { Booking, Cart, MovieScreening, Movie } from "com.cinecar.objects";
 import { TicketShop } from "./TicketShop";
+import { BookingService } from "../structure/bookingservice/behaviour/BookingService";
+import { MovieService } from "../structure/movieservice/behaviour/MovieService";
+
 
 export class TicketShopImplementation implements TicketShop {
-    addTicketToCart(id: number, row: number): Promise<void> {
-        throw new Error("Method not implemented.");
+    addTicketToCart(id: number, row: number): Promise<Cart> {
+        
     }
 
-    cancelBooking(id: number): Promise<void> {
+    cancelBooking(id: number): Promise<Booking> {
         throw new Error("Method not implemented.");
     }
 
