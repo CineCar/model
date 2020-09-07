@@ -18,9 +18,9 @@ export interface TicketShop {
     createMovieScreening(movieid: number, dateTime: Date): MovieScreening;
 
     // DELETE
-    deleteMovie(movieid: number): void;
+    deleteMovie(movieid: number): Promise<void>;
 
-    deteteMovieScreening(moviescreeningid: number): void;
+    deleteMovieScreening(moviescreeningid: number): void;
 
     //GETTERS
     getBooking(): Booking;
@@ -29,7 +29,7 @@ export interface TicketShop {
 
     getCart(id: number): Cart;
 
-    getMovie(movieid: number): Movie;
+    getMovie(movieid: number): Promise<Movie>;
 
     getMovies(): Array<Movie>;
 

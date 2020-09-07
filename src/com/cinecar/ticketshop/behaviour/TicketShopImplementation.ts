@@ -22,7 +22,7 @@ export class TicketShopImplementation implements TicketShop {
         throw new Error("Method not implemented.");
     }
 
-    createMovie(name: string, duration: number): Movie {
+    createMovie(name: string, duration: number): Promise<Movie> {
         throw new Error("Method not implemented.");
     }
 
@@ -30,11 +30,11 @@ export class TicketShopImplementation implements TicketShop {
         throw new Error("Method not implemented.");
     }
 
-    deleteMovie(movieid: number): void {
+    deleteMovie(movieid: number): Promise<void> {
         throw new Error("Method not implemented.");
     }
 
-    deteteMovieScreening(moviescreeningid: number): void {
+    deleteMovieScreening(moviescreeningid: number): void {
         throw new Error("Method not implemented.");
     }
 

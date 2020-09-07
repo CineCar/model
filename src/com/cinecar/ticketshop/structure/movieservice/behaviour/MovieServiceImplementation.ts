@@ -28,7 +28,7 @@ class MovieServiceImplementation implements MovieService{
         return DatabaseConnectorImplementation.getSingleton().delete(movieid, DatabaseObjectType.Movie);
 
     }
-    deteteMovieScreening(moviescreeningid: number): void {
+    deleteMovieScreening(moviescreeningid: number): void {
         throw new Error("Method not implemented.");
     }
     getMovie(movieid: number): Movie {

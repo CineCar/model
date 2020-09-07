@@ -13,7 +13,7 @@ export interface MovieService  {
 
     deleteMovie(movieid: number): Promise<void>;
 
-    deteteMovieScreening(moviescreeningid: number): void;
+    deleteMovieScreening(moviescreeningid: number): void;
 
     getMovie(movieid: number): Movie;
 
