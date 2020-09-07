@@ -2,23 +2,23 @@ import { Booking, Cart, MovieScreening, Movie } from "com.cinecar.objects";
 import { TicketShop } from "./TicketShop";
 
 export class TicketShopImplementation implements TicketShop {
-    addTicketToCart(id: number, row: number): void {
+    addTicketToCart(id: number, row: number): Promise<void> {
         throw new Error("Method not implemented.");
     }
 
-    cancelBooking(id: number): void {
+    cancelBooking(id: number): Promise<void> {
         throw new Error("Method not implemented.");
     }
 
-    changeMovieInformation(id: number, string: any, duration: number): void {
+    changeMovieInformation(id: number, string: any, duration: number): Promise<void> {
         throw new Error("Method not implemented.");
     }
 
-    changeMovieScreeningInformationInformation(id: number, dateTime: Date): void {
+    changeMovieScreeningInformationInformation(id: number, dateTime: Date): Promise<void> {
         throw new Error("Method not implemented.");
     }
 
-    checkoutCart(id: number, firstname: string, lastname: string): Booking {
+    checkoutCart(id: number, firstname: string, lastname: string): Promise<Booking> {
         throw new Error("Method not implemented.");
     }
 
@@ -26,7 +26,7 @@ export class TicketShopImplementation implements TicketShop {
         throw new Error("Method not implemented.");
     }
 
-    createMovieScreening(movieid: number, dateTime: Date): MovieScreening {
+    createMovieScreening(movieid: number, dateTime: Date): Promise<MovieScreening> {
         throw new Error("Method not implemented.");
     }
 
@@ -34,31 +34,31 @@ export class TicketShopImplementation implements TicketShop {
         throw new Error("Method not implemented.");
     }
 
-    deleteMovieScreening(moviescreeningid: number): void {
+    deleteMovieScreening(moviescreeningid: number): Promise<void> {
         throw new Error("Method not implemented.");
     }
 
-    getBooking(): Booking {
+    getBooking(): Promise<Booking> {
         throw new Error("Method not implemented.");
     }
 
-    getBookings(): any[] {
+    getBookings(): Promise<Booking[]> {
         throw new Error("Method not implemented.");
     }
 
-    getCart(id: number): Cart {
+    getCart(id: number): Promise<Cart> {
         throw new Error("Method not implemented.");
     }
 
-    getMovie(movieid: number): Movie {
+    getMovie(movieid: number): Promise<Movie> {
         throw new Error("Method not implemented.");
     }
 
-    getMovies(): any[] {
+    getMovies(): Promise<Movie[]> {
         throw new Error("Method not implemented.");
     }
 
-    getMovieScreenings(): any[] {
+    getMovieScreenings(): Promise<MovieScreening[]> {
         throw new Error("Method not implemented.");
     }
 }
