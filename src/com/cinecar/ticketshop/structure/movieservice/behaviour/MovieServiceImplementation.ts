@@ -17,7 +17,16 @@ class MovieServiceImplementation implements MovieService{
 
     }
     changeMovieScreeningInformationInformation(id: number, dateTime: Date): Promise<MovieScreening> {
-        throw new Error("Method not implemented.");
+
+        let movie: Movie = new Movie();
+        movie.setId(id);
+
+        let moviescreening: MovieScreening = new MovieScreening();
+        moviescreening.setMovie(movie);
+        moviescreening.setDatetime(dateTime);
+
+        return <Promise<MovieScreening>> DatabaseConnectorImplementation.getSingleton().update(moviescreening, DatabaseObjectType.MovieScreening);
+        
     }
     createMovie(name: string, duration: number): Promise<Movie>{
         
