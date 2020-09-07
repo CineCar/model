@@ -1,14 +1,14 @@
-import { Booking, Cart, MovieScreening, Movie } from "com.cinecar.objects";
+import { Booking, Cart, MovieScreening, Movie, Ticket } from "com.cinecar.objects";
 
 export interface TicketShop {
     // MISC
-    addTicketToCart(id: number, row: number): Promise<Cart>;
+    addTicketToCart(id: number, ticket: Ticket): Promise<Cart>;
 
     cancelBooking(id: number): Promise<Booking>;
 
     changeMovieInformation(id: number, name: string, duration: number): Promise<Movie>;
 
-    changeMovieScreeningInformationInformation(id: number, dateTime: Date): Promise<MovieScreening>;
+    changeMovieScreeningInformation(id: number, dateTime: Date): Promise<MovieScreening>;
 
     checkoutCart(id: number, firstname: string, lastname: string): Promise<Booking>;
 
