@@ -1,4 +1,5 @@
 import { BookingService } from "./BookingService";
+import { Booking } from "com.cinecar.objects";
 
 export class BookingServiceImplementation implements BookingService{
     addTicketToCart(id: number, ticket: any): void {
@@ -13,7 +14,7 @@ export class BookingServiceImplementation implements BookingService{
     getBooking(id: number) {
         throw new Error("Method not implemented.");
     }
-    getBookings(): any[] {
+    getBookings(): Array<Booking> {
         throw new Error("Method not implemented.");
     }
     getCart(id: number) {
