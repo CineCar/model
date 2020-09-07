@@ -6,6 +6,9 @@ import { MovieService } from "../structure/movieservice/behaviour/MovieService";
 
 export class TicketShopImplementation implements TicketShop {
     addTicketToCart(id: number, row: number): Promise<Cart> {
+
+        throw new Error("Method not implemented.");
+
         
     }
 

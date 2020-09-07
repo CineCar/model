@@ -3,7 +3,29 @@ import { Booking, Cart, Ticket, Person } from "com.cinecar.objects";
 
 import { DatabaseConnectorImplementation, DatabaseObjectType } from "com.cinecar.databaseconnector";
 
+
+
+
 export class BookingServiceImplementation implements BookingService{
+
+
+    private static bookingServiceImplementation: BookingServiceImplementation;
+
+
+
+
+
+    static getSingleton(): BookingServiceImplementation{
+
+        if(BookingServiceImplementation.bookingServiceImplementation == null){
+            BookingServiceImplementation.bookingServiceImplementation = new BookingServiceImplementation();
+        }
+        
+        return BookingServiceImplementation.bookingServiceImplementation;
+        
+
+    }
+
     async addTicketToCart(id: number, ticket: Ticket): Promise<Cart> {
 
         let cart: Cart = <Cart> await DatabaseConnectorImplementation.getSingleton().get(id, DatabaseObjectType.Cart);
