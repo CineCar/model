@@ -1,3 +1,4 @@
+import { Booking, Cart, MovieScreening, Movie } from "com.cinecar.objects";
 import { TicketShop } from "./TicketShop";
 
 export class TicketShopImplementation implements TicketShop {
@@ -17,15 +18,15 @@ export class TicketShopImplementation implements TicketShop {
         throw new Error("Method not implemented.");
     }
 
-    checkoutCart(id: number, firstname: string, lastname: string) {
+    checkoutCart(id: number, firstname: string, lastname: string): Booking {
         throw new Error("Method not implemented.");
     }
 
-    createMovie(name: string, duration: number) {
+    createMovie(name: string, duration: number): Movie {
         throw new Error("Method not implemented.");
     }
 
-    createMovieScreening(movieid: number, dateTime: Date) {
+    createMovieScreening(movieid: number, dateTime: Date): MovieScreening {
         throw new Error("Method not implemented.");
     }
 
@@ -37,7 +38,7 @@ export class TicketShopImplementation implements TicketShop {
         throw new Error("Method not implemented.");
     }
 
-    getBooking() {
+    getBooking(): Booking {
         throw new Error("Method not implemented.");
     }
 
@@ -45,11 +46,11 @@ export class TicketShopImplementation implements TicketShop {
         throw new Error("Method not implemented.");
     }
 
-    getCart(id: number) {
+    getCart(id: number): Cart {
         throw new Error("Method not implemented.");
     }
 
-    getMovie(movieid: number) {
+    getMovie(movieid: number): Movie {
         throw new Error("Method not implemented.");
     }
 

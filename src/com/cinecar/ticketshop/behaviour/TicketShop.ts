@@ -1,7 +1,4 @@
-//import { Booking } from "module";
-//import { Movie } from "module";
-//import { MovieScreening } from "module";
-//import { Cart } from "module";
+import { Booking, Cart, MovieScreening, Movie } from "com.cinecar.objects";
 
 export interface TicketShop {
     // MISC
@@ -9,7 +6,7 @@ export interface TicketShop {
 
     cancelBooking(id: number): void;
 
-    changeMovieInformation(id: number, string: name, duration: number): void;
+    changeMovieInformation(id: number, name: string, duration: number): void;
 
     changeMovieScreeningInformationInformation(id: number, dateTime: Date): void;
 
