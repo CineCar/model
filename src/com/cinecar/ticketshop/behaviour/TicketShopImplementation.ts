@@ -4,11 +4,10 @@ import { BookingService } from "../structure/bookingservice/behaviour/BookingSer
 import { MovieService } from "../structure/movieservice/behaviour/MovieService";
 import { BookingServiceImplementation } from "../structure/bookingservice/behaviour/BookingServiceImplementation";
 import { MovieServiceImplementation } from "../structure/movieservice/behaviour/MovieServiceImplementation";
-
+import { AuthenticationServiceImplementation } from "../structure/authenticationservice/behaviour/AuthenticationServiceImplementation";
 
 export class TicketShopImplementation implements TicketShop {
     addTicketToCart(id: number, ticket: Ticket): Promise<Cart> {
-
         return BookingServiceImplementation.getSingleton().addTicketToCart(id, ticket);
     }
 
@@ -66,5 +65,13 @@ export class TicketShopImplementation implements TicketShop {
 
     getMovieScreenings(): Promise<MovieScreening[]> {
         return MovieServiceImplementation.getSingleton().getMovieScreenings();
+    }
+
+    loginUser(id: number, password: String): Promise<any> {
+        return AuthenticationServiceImplementation.getSingleton().loginUser(id, password);
+    }
+
+    verifySession(id: number, token: String): Promise<boolean> {
+        return AuthenticationServiceImplementation.getSingleton().verifySession(id, token);
     }
 }

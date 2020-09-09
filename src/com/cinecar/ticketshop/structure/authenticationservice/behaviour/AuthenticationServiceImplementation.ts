@@ -5,7 +5,17 @@ import { DatabaseConnectorImplementation, DatabaseObjectType } from "com.cinecar
 import { TokenGenerator } from "../structure/TokenGenerator";
 
 export class AuthenticationServiceImplementation implements AuthenticationService {
-    loginUser(id: number, password: String): Promise<Session> {
+    private static authenticationService: AuthenticationService;
+
+    public static getSingleton(): AuthenticationService {
+        if (AuthenticationServiceImplementation.authenticationService == null) {
+            AuthenticationServiceImplementation.authenticationService = new AuthenticationServiceImplementation();
+        }
+
+        return AuthenticationServiceImplementation.authenticationService;
+    }
+
+    public loginUser(id: number, password: String): Promise<Session> {
         return new Promise((resolve, reject) => {
             DatabaseConnectorImplementation.getSingleton()
                 .get(id, DatabaseObjectType.User)
@@ -34,7 +44,7 @@ export class AuthenticationServiceImplementation implements AuthenticationServic
         });
     }
 
-    verifySession(id: number, token: String): Promise<boolean> {
+    public verifySession(id: number, token: String): Promise<boolean> {
         throw new Error("Method not implemented.");
     }
 }
