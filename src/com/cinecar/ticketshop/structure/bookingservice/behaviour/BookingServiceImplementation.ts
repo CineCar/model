@@ -14,6 +14,12 @@ export class BookingServiceImplementation implements BookingService {
         return BookingServiceImplementation.bookingServiceImplementation;
     }
 
+    public createCart(): Promise<Cart> {
+        return <Promise<Cart>>(
+            DatabaseConnectorImplementation.getSingleton().create(new Cart(), DatabaseObjectType.Cart)
+        );
+    }
+
     async addTicketToCart(id: number, movieScreeningId: number, row: number): Promise<Cart> {
         let cart: Cart = <Cart>await DatabaseConnectorImplementation.getSingleton().get(id, DatabaseObjectType.Cart);
 
