@@ -1,12 +1,20 @@
 import { Booking, Cart, MovieScreening, Movie, Ticket } from "com.cinecar.objects";
 import { TicketShop } from "./TicketShop";
-import { BookingService } from "../structure/bookingservice/behaviour/BookingService";
-import { MovieService } from "../structure/movieservice/behaviour/MovieService";
 import { BookingServiceImplementation } from "../structure/bookingservice/behaviour/BookingServiceImplementation";
 import { MovieServiceImplementation } from "../structure/movieservice/behaviour/MovieServiceImplementation";
 import { AuthenticationServiceImplementation } from "../structure/authenticationservice/behaviour/AuthenticationServiceImplementation";
 
 export class TicketShopImplementation implements TicketShop {
+    private static ticketShop: TicketShop;
+
+    public static getSingleton(): TicketShop {
+        if (TicketShopImplementation.ticketShop == null) {
+            TicketShopImplementation.ticketShop = new TicketShopImplementation();
+        }
+
+        return TicketShopImplementation.ticketShop;
+    }
+
     addTicketToCart(id: number, ticket: Ticket): Promise<Cart> {
         return BookingServiceImplementation.getSingleton().addTicketToCart(id, ticket);
     }
