@@ -7,6 +7,16 @@ import { MovieServiceImplementation } from "../structure/movieservice/behaviour/
 import { AuthenticationServiceImplementation } from "../structure/authenticationservice/behaviour/AuthenticationServiceImplementation";
 
 export class TicketShopImplementation implements TicketShop {
+    private static ticketShop: TicketShop;
+
+    public static getSingleton(): TicketShop {
+        if (TicketShopImplementation.ticketShop == null) {
+            TicketShopImplementation.ticketShop = new TicketShopImplementation();
+        }
+
+        return TicketShopImplementation.ticketShop;
+    }
+
     addTicketToCart(id: number, ticket: Ticket): Promise<Cart> {
         return BookingServiceImplementation.getSingleton().addTicketToCart(id, ticket);
     }
