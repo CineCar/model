@@ -44,7 +44,17 @@ export class AuthenticationServiceImplementation implements AuthenticationServic
         });
     }
 
-    public verifySession(id: number, token: String): Promise<boolean> {
-        throw new Error("Method not implemented.");
+    public verifySession(id: number, token: String): Promise<void> {
+        return new Promise((resolve, reject) => {
+            DatabaseConnectorImplementation.getSingleton()
+                .get(id, DatabaseObjectType.Session)
+                .then((session) => {
+                    if ((<Session>session).getToken() == token) resolve();
+                    else reject();
+                })
+                .catch((err) => {
+                    reject(err);
+                });
+        });
     }
 }
