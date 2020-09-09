@@ -1,9 +1,7 @@
-import { Booking, Ticket, Cart  } from "com.cinecar.objects";
+import { Booking, Ticket, Cart } from "com.cinecar.objects";
 
 export interface BookingService {
-
-
-    addTicketToCart(id: number, ticket: Ticket): Promise<Cart>;
+    addTicketToCart(id: number, movieScreeningId: number, row: number): Promise<Cart>;
     cancelBooking(id: number): Promise<Booking>;
     checkoutCart(id: number, firstname: string, lastname: string): Promise<Booking>;
     getBooking(id: number): Promise<Booking>;

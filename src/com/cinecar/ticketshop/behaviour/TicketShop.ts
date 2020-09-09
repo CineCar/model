@@ -2,7 +2,7 @@ import { Booking, Cart, MovieScreening, Movie, Ticket, Session } from "com.cinec
 
 export interface TicketShop {
     // MISC
-    addTicketToCart(id: number, ticket: Ticket): Promise<Cart>;
+    addTicketToCart(id: number, movieScreeningId: number, row: number): Promise<Cart>;
 
     cancelBooking(id: number): Promise<Booking>;
 

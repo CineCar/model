@@ -15,8 +15,8 @@ export class TicketShopImplementation implements TicketShop {
         return TicketShopImplementation.ticketShop;
     }
 
-    addTicketToCart(id: number, ticket: Ticket): Promise<Cart> {
-        return BookingServiceImplementation.getSingleton().addTicketToCart(id, ticket);
+    addTicketToCart(id: number, movieScreeningId: number, row: number): Promise<Cart> {
+        return BookingServiceImplementation.getSingleton().addTicketToCart(id, movieScreeningId, row);
     }
 
     cancelBooking(id: number): Promise<Booking> {
