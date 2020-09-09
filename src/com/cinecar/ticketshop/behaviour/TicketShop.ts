@@ -34,4 +34,9 @@ export interface TicketShop {
     getMovies(): Promise<Array<Movie>>;
 
     getMovieScreenings(): Promise<Array<MovieScreening>>;
+
+    // AUTHENTICATION
+
+    loginUser(id: number, password: String): Promise<Session>;
+    verifySession(id: number, token: String): Promise<boolean>;
 }
