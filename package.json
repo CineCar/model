@@ -24,7 +24,8 @@
         "typescript": "^4.0.2"
     },
     "dependencies": {
-        "com.cinecar.objects": "git+ssh://git@github.com:CineCar/objects.git",
-        "com.cinecar.databaseconnector": "git+ssh://git@github.com:CineCar/db-connector.git"
+        "bcrypt": "^5.0.0",
+        "com.cinecar.databaseconnector": "git+ssh://git@github.com:CineCar/db-connector.git",
+        "com.cinecar.objects": "git+ssh://git@github.com:CineCar/objects.git"
     }
 }
