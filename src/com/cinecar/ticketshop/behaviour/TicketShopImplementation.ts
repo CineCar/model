@@ -15,6 +15,10 @@ export class TicketShopImplementation implements TicketShop {
         return TicketShopImplementation.ticketShop;
     }
 
+    createCart(): Promise<Cart> {
+        return BookingServiceImplementation.getSingleton().createCart();
+    }
+
     addTicketToCart(id: number, movieScreeningId: number, row: number): Promise<Cart> {
         return BookingServiceImplementation.getSingleton().addTicketToCart(id, movieScreeningId, row);
     }
