@@ -1,4 +1,4 @@
-import { Booking, Cart, MovieScreening, Movie, Ticket } from "com.cinecar.objects";
+import { Booking, Cart, MovieScreening, Movie, Ticket, Session } from "com.cinecar.objects";
 
 export interface TicketShop {
     // MISC
@@ -38,5 +38,6 @@ export interface TicketShop {
     // AUTHENTICATION
 
     loginUser(id: number, password: String): Promise<Session>;
+
     verifySession(id: number, token: String): Promise<boolean>;
 }
