@@ -79,7 +79,7 @@ export class TicketShopImplementation implements TicketShop {
         return AuthenticationServiceImplementation.getSingleton().loginUser(id, password);
     }
 
-    verifySession(id: number, token: String): Promise<boolean> {
+    verifySession(id: number, token: String): Promise<void> {
         return AuthenticationServiceImplementation.getSingleton().verifySession(id, token);
     }
 }

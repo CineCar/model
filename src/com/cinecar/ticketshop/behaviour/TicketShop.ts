@@ -39,5 +39,5 @@ export interface TicketShop {
 
     loginUser(id: number, password: String): Promise<Session>;
 
-    verifySession(id: number, token: String): Promise<boolean>;
+    verifySession(id: number, token: String): Promise<void>;
 }
