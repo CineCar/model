@@ -1,7 +1,5 @@
 import { Booking, Cart, MovieScreening, Movie, Ticket } from "com.cinecar.objects";
 import { TicketShop } from "./TicketShop";
-import { BookingService } from "../structure/bookingservice/behaviour/BookingService";
-import { MovieService } from "../structure/movieservice/behaviour/MovieService";
 import { BookingServiceImplementation } from "../structure/bookingservice/behaviour/BookingServiceImplementation";
 import { MovieServiceImplementation } from "../structure/movieservice/behaviour/MovieServiceImplementation";
 import { AuthenticationServiceImplementation } from "../structure/authenticationservice/behaviour/AuthenticationServiceImplementation";
