@@ -60,6 +60,8 @@ export class BookingServiceImplementation implements BookingService {
         person.setFirstname(firstname);
         person.setLastname(lastname);
 
+        person = <Person>await DatabaseConnectorImplementation.getSingleton().create(person, DatabaseObjectType.Person);
+
         let booking: Booking = new Booking();
         booking.setPerson(person);
         booking.setTickets(cart.getTickets());
