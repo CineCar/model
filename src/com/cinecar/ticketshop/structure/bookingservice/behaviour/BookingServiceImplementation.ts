@@ -65,6 +65,7 @@ export class BookingServiceImplementation implements BookingService {
         let booking: Booking = new Booking();
         booking.setPerson(person);
         booking.setTickets(cart.getTickets());
+        booking.setCancelled(false);
 
         return <Promise<Booking>>(
             DatabaseConnectorImplementation.getSingleton().create(booking, DatabaseObjectType.Booking)
