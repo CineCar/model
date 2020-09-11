@@ -5,18 +5,18 @@ export interface TicketShop {
 
     createCart(): Promise<Cart>;
 
-    addTicketToCart(id: number, movieScreeningId: number, row: number): Promise<Cart>;
+    addTicketToCart(id: number, movieScreeningId: number): Promise<Cart>;
 
     cancelBooking(id: number): Promise<Booking>;
 
-    changeMovieInformation(id: number, name: string, duration: number): Promise<Movie>;
+    changeMovieInformation(id: number, name: string, duration: number, price: number, imageUrl: string): Promise<Movie>;
 
     changeMovieScreeningInformation(id: number, dateTime: Date): Promise<MovieScreening>;
 
     checkoutCart(id: number, firstname: string, lastname: string): Promise<Booking>;
 
     // CREATE
-    createMovie(name: string, duration: number): Promise<Movie>;
+    createMovie(name: string, duration: number, price: number, imageUrl: string): Promise<Movie>;
 
     createMovieScreening(movieid: number, dateTime: Date): Promise<MovieScreening>;
 

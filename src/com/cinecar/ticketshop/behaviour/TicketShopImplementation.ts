@@ -19,16 +19,22 @@ export class TicketShopImplementation implements TicketShop {
         return BookingServiceImplementation.getSingleton().createCart();
     }
 
-    addTicketToCart(id: number, movieScreeningId: number, row: number): Promise<Cart> {
-        return BookingServiceImplementation.getSingleton().addTicketToCart(id, movieScreeningId, row);
+    addTicketToCart(id: number, movieScreeningId: number): Promise<Cart> {
+        return BookingServiceImplementation.getSingleton().addTicketToCart(id, movieScreeningId);
     }
 
     cancelBooking(id: number): Promise<Booking> {
         return BookingServiceImplementation.getSingleton().cancelBooking(id);
     }
 
-    changeMovieInformation(id: number, name: string, duration: number): Promise<Movie> {
-        return MovieServiceImplementation.getSingleton().changeMovieInformation(id, name, duration);
+    changeMovieInformation(
+        id: number,
+        name: string,
+        duration: number,
+        price: number,
+        imageUrl: string
+    ): Promise<Movie> {
+        return MovieServiceImplementation.getSingleton().changeMovieInformation(id, name, duration, price, imageUrl);
     }
 
     changeMovieScreeningInformation(id: number, dateTime: Date): Promise<MovieScreening> {
@@ -39,8 +45,8 @@ export class TicketShopImplementation implements TicketShop {
         return BookingServiceImplementation.getSingleton().checkoutCart(id, firstname, lastname);
     }
 
-    createMovie(name: string, duration: number): Promise<Movie> {
-        return MovieServiceImplementation.getSingleton().createMovie(name, duration);
+    createMovie(name: string, duration: number, price: number, imageUrl: string): Promise<Movie> {
+        return MovieServiceImplementation.getSingleton().createMovie(name, duration, price, imageUrl);
     }
 
     createMovieScreening(movieid: number, dateTime: Date): Promise<MovieScreening> {

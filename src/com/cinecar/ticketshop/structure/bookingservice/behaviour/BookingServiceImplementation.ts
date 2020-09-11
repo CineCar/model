@@ -20,7 +20,7 @@ export class BookingServiceImplementation implements BookingService {
         );
     }
 
-    async addTicketToCart(id: number, movieScreeningId: number, row: number): Promise<Cart> {
+    async addTicketToCart(id: number, movieScreeningId: number): Promise<Cart> {
         let cart: Cart = <Cart>await DatabaseConnectorImplementation.getSingleton().get(id, DatabaseObjectType.Cart);
 
         let cartTickets: Array<Ticket> = cart.getTickets();
@@ -29,7 +29,6 @@ export class BookingServiceImplementation implements BookingService {
         movieScreening.setId(movieScreeningId);
 
         let ticket: Ticket = new Ticket();
-        ticket.setRow(row);
         ticket.setMovieScreening(movieScreening);
 
         ticket = <Ticket>await DatabaseConnectorImplementation.getSingleton().create(ticket, DatabaseObjectType.Ticket);

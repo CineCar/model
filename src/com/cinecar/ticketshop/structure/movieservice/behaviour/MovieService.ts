@@ -1,25 +1,21 @@
-import {  Movie, MovieScreening} from "com.cinecar.objects";
+import { Movie, MovieScreening } from "com.cinecar.objects";
 
-export interface MovieService  {
-
-
-    changeMovieInformation(id: number, name: string, duration: number): Promise<Movie>;
+export interface MovieService {
+    changeMovieInformation(id: number, name: string, duration: number, price: number, imageUrl: string): Promise<Movie>;
 
     changeMovieScreeningInformation(id: number, dateTime: Date): Promise<MovieScreening>;
 
-    createMovie(name: string, duration: number): Promise<Movie>;
+    createMovie(name: string, duration: number, price: number, imageUrl: string): Promise<Movie>;
 
-    createMovieScreening(movieid: number, dateTime: Date): Promise<MovieScreening>;
+    createMovieScreening(movieId: number, dateTime: Date): Promise<MovieScreening>;
 
-    deleteMovie(movieid: number): Promise<void>;
+    deleteMovie(movieId: number): Promise<void>;
 
-    deleteMovieScreening(moviescreeningid: number): Promise<void>;
+    deleteMovieScreening(moviescreeningId: number): Promise<void>;
 
-    getMovie(movieid: number): Promise<Movie>;
+    getMovie(movieId: number): Promise<Movie>;
 
     getMovies(): Promise<Array<Movie>>;
 
     getMovieScreenings(): Promise<Array<MovieScreening>>;
-
-
 }

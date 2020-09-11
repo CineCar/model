@@ -1,40 +1,37 @@
 import { MovieService } from "./MovieService";
 import { Movie, MovieScreening } from "com.cinecar.objects";
 
-import {  DatabaseConnectorImplementation, DatabaseObjectType } from "com.cinecar.databaseconnector";
+import { DatabaseConnectorImplementation, DatabaseObjectType } from "com.cinecar.databaseconnector";
 
-export class MovieServiceImplementation implements MovieService{
-
+export class MovieServiceImplementation implements MovieService {
     private static movieServiceImplementation: MovieServiceImplementation;
 
-
-
-    static getSingleton(): MovieServiceImplementation{
-
-        if(MovieServiceImplementation.movieServiceImplementation == null){
+    static getSingleton(): MovieServiceImplementation {
+        if (MovieServiceImplementation.movieServiceImplementation == null) {
             MovieServiceImplementation.movieServiceImplementation = new MovieServiceImplementation();
         }
 
         return MovieServiceImplementation.movieServiceImplementation;
     }
 
-
-
-
-    changeMovieInformation(id: number, name: string, duration: number): Promise<Movie> {
-
+    changeMovieInformation(
+        id: number,
+        name: string,
+        duration: number,
+        price: number,
+        imageUrl: string
+    ): Promise<Movie> {
         let movie: Movie = new Movie();
         movie.setId(id);
         movie.setName(name);
         movie.setDuration(duration);
+        movie.setPrice(price);
+        movie.setImageUrl(imageUrl);
 
-        return <Promise<Movie>> DatabaseConnectorImplementation.getSingleton().update(movie, DatabaseObjectType.Movie);
-
-        
-
+        return <Promise<Movie>>DatabaseConnectorImplementation.getSingleton().update(movie, DatabaseObjectType.Movie);
     }
-    changeMovieScreeningInformation (id: number, dateTime: Date): Promise<MovieScreening> {
 
+    changeMovieScreeningInformation(id: number, dateTime: Date): Promise<MovieScreening> {
         let movie: Movie = new Movie();
         movie.setId(id);
 
@@ -42,49 +39,58 @@ export class MovieServiceImplementation implements MovieService{
         moviescreening.setMovie(movie);
         moviescreening.setDatetime(dateTime);
 
-        return <Promise<MovieScreening>> DatabaseConnectorImplementation.getSingleton().update(moviescreening, DatabaseObjectType.MovieScreening);
-        
+        return <Promise<MovieScreening>>(
+            DatabaseConnectorImplementation.getSingleton().update(moviescreening, DatabaseObjectType.MovieScreening)
+        );
     }
-    createMovie(name: string, duration: number): Promise<Movie>{
-        
+
+    createMovie(name: string, duration: number, price: number, imageUrl: string): Promise<Movie> {
         const movie: Movie = new Movie();
 
         movie.setDuration(duration);
         movie.setName(name);
+        movie.setPrice(price);
+        movie.setImageUrl(imageUrl);
 
-        return <Promise<Movie>> DatabaseConnectorImplementation.getSingleton().create(movie, DatabaseObjectType.Movie);
+        return <Promise<Movie>>DatabaseConnectorImplementation.getSingleton().create(movie, DatabaseObjectType.Movie);
     }
-    createMovieScreening(movieid: number, dateTime: Date): Promise<MovieScreening> {
+
+    createMovieScreening(movieId: number, dateTime: Date): Promise<MovieScreening> {
         const moviescreening: MovieScreening = new MovieScreening();
 
         let movie: Movie = new Movie();
-        movie.setId(movieid);
+        movie.setId(movieId);
 
         moviescreening.setMovie(movie);
         moviescreening.setDatetime(dateTime);
 
-        return <Promise<MovieScreening>>DatabaseConnectorImplementation.getSingleton().create(moviescreening, DatabaseObjectType.MovieScreening);
-
-        
+        return <Promise<MovieScreening>>(
+            DatabaseConnectorImplementation.getSingleton().create(moviescreening, DatabaseObjectType.MovieScreening)
+        );
     }
-    deleteMovie(movieid: number): Promise<void> {
 
-
-        return DatabaseConnectorImplementation.getSingleton().delete(movieid, DatabaseObjectType.Movie);
-
+    deleteMovie(movieId: number): Promise<void> {
+        return DatabaseConnectorImplementation.getSingleton().delete(movieId, DatabaseObjectType.Movie);
     }
+
     deleteMovieScreening(moviescreeningid: number): Promise<void> {
-        return DatabaseConnectorImplementation.getSingleton().delete(moviescreeningid, DatabaseObjectType.MovieScreening);
+        return DatabaseConnectorImplementation.getSingleton().delete(
+            moviescreeningid,
+            DatabaseObjectType.MovieScreening
+        );
     }
-    getMovie(movieid: number): Promise<Movie> {
-        return <Promise<Movie>> DatabaseConnectorImplementation.getSingleton().get(movieid, DatabaseObjectType.Movie);
+
+    getMovie(movieId: number): Promise<Movie> {
+        return <Promise<Movie>>DatabaseConnectorImplementation.getSingleton().get(movieId, DatabaseObjectType.Movie);
     }
+
     getMovies(): Promise<Movie[]> {
-        return <Promise<Movie[]>> DatabaseConnectorImplementation.getSingleton().getAll(DatabaseObjectType.Movie);
+        return <Promise<Movie[]>>DatabaseConnectorImplementation.getSingleton().getAll(DatabaseObjectType.Movie);
     }
+
     getMovieScreenings(): Promise<MovieScreening[]> {
-        return <Promise<MovieScreening[]>> DatabaseConnectorImplementation.getSingleton().getAll(DatabaseObjectType.MovieScreening);
+        return <Promise<MovieScreening[]>>(
+            DatabaseConnectorImplementation.getSingleton().getAll(DatabaseObjectType.MovieScreening)
+        );
     }
-
-
 }
