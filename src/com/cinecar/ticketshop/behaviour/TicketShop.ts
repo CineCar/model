@@ -7,6 +7,8 @@ export interface TicketShop {
 
     addTicketToCart(id: number, movieScreeningId: number): Promise<Cart>;
 
+    deleteTicketFromCart(cartId: number, ticketId: number): Promise<Cart>;
+
     cancelBooking(id: number): Promise<Booking>;
 
     changeMovieInformation(id: number, name: string, duration: number, price: number, imageUrl: string): Promise<Movie>;

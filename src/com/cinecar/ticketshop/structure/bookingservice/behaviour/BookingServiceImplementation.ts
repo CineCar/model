@@ -39,6 +39,12 @@ export class BookingServiceImplementation implements BookingService {
         return <Promise<Cart>>DatabaseConnectorImplementation.getSingleton().update(cart, DatabaseObjectType.Cart);
     }
 
+    async deleteTicketFromCart(cartId: number, ticketId: number): Promise<Cart> {
+        await DatabaseConnectorImplementation.getSingleton().delete(ticketId, DatabaseObjectType.Ticket);
+
+        return <Promise<Cart>>DatabaseConnectorImplementation.getSingleton().get(cartId, DatabaseObjectType.Cart);
+    }
+
     async cancelBooking(id: number): Promise<Booking> {
         let booking: Booking = <Booking>(
             await DatabaseConnectorImplementation.getSingleton().get(id, DatabaseObjectType.Booking)

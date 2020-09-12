@@ -23,6 +23,10 @@ export class TicketShopImplementation implements TicketShop {
         return BookingServiceImplementation.getSingleton().addTicketToCart(id, movieScreeningId);
     }
 
+    deleteTicketFromCart(cartId: number, ticketId: number): Promise<Cart> {
+        return BookingServiceImplementation.getSingleton().deleteTicketFromCart(cartId, ticketId);
+    }
+
     cancelBooking(id: number): Promise<Booking> {
         return BookingServiceImplementation.getSingleton().cancelBooking(id);
     }
