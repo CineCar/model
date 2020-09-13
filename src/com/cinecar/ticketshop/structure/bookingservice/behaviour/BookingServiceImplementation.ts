@@ -15,9 +15,11 @@ export class BookingServiceImplementation implements BookingService {
     }
 
     public createCart(): Promise<Cart> {
-        return <Promise<Cart>>(
-            DatabaseConnectorImplementation.getSingleton().create(new Cart(), DatabaseObjectType.Cart)
-        );
+        const cart: Cart = new Cart();
+
+        cart.setCreationDate(new Date());
+
+        return <Promise<Cart>>DatabaseConnectorImplementation.getSingleton().create(cart, DatabaseObjectType.Cart);
     }
 
     async addTicketToCart(id: number, movieScreeningId: number): Promise<Cart> {
