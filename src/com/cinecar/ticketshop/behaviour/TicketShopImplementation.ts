@@ -81,12 +81,20 @@ export class TicketShopImplementation implements TicketShop {
         return MovieServiceImplementation.getSingleton().getMovie(movieid);
     }
 
-    getMovies(): Promise<Movie[]> {
+    getMovies(): Promise<Array<Movie>> {
         return MovieServiceImplementation.getSingleton().getMovies();
     }
 
-    getMovieScreenings(): Promise<MovieScreening[]> {
+    getMovieScreenings(): Promise<Array<MovieScreening>> {
         return MovieServiceImplementation.getSingleton().getMovieScreenings();
+    }
+
+    searchMovies(query: string): Promise<Array<Movie>> {
+        return MovieServiceImplementation.getSingleton().searchMovies(query);
+    }
+
+    filterMovieScreenings(start: Date, end: Date): Promise<Array<MovieScreening>> {
+        return MovieServiceImplementation.getSingleton().filterMovieScreenings(start, end);
     }
 
     loginUser(id: number, password: String): Promise<any> {

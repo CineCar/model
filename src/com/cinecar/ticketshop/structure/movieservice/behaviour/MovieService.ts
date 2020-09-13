@@ -18,4 +18,8 @@ export interface MovieService {
     getMovies(): Promise<Array<Movie>>;
 
     getMovieScreenings(): Promise<Array<MovieScreening>>;
+
+    searchMovies(query: string): Promise<Array<Movie>>;
+
+    filterMovieScreenings(start: Date, end: Date): Promise<Array<MovieScreening>>;
 }

@@ -40,6 +40,12 @@ export interface TicketShop {
 
     getMovieScreenings(): Promise<Array<MovieScreening>>;
 
+    // FILTERING AND SEARCHING
+
+    searchMovies(query: string): Promise<Array<Movie>>;
+
+    filterMovieScreenings(start: Date, end: Date): Promise<Array<MovieScreening>>;
+
     // AUTHENTICATION
 
     loginUser(id: number, password: String): Promise<Session>;

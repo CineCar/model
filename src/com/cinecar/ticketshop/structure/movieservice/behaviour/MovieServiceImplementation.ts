@@ -93,4 +93,21 @@ export class MovieServiceImplementation implements MovieService {
             DatabaseConnectorImplementation.getSingleton().getAll(DatabaseObjectType.MovieScreening)
         );
     }
+
+    searchMovies(query: string): Promise<Array<Movie>> {
+        return <Promise<Movie[]>>(
+            DatabaseConnectorImplementation.getSingleton().search("name", query, DatabaseObjectType.Movie)
+        );
+    }
+
+    filterMovieScreenings(start: Date, end: Date): Promise<Array<MovieScreening>> {
+        return <Promise<MovieScreening[]>>(
+            DatabaseConnectorImplementation.getSingleton().filter(
+                "datetime",
+                start,
+                end,
+                DatabaseObjectType.MovieScreening
+            )
+        );
+    }
 }
