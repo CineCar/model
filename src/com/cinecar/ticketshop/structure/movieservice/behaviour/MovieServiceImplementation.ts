@@ -31,13 +31,18 @@ export class MovieServiceImplementation implements MovieService {
         return <Promise<Movie>>DatabaseConnectorImplementation.getSingleton().update(movie, DatabaseObjectType.Movie);
     }
 
-    changeMovieScreeningInformation(id: number, dateTime: Date): Promise<MovieScreening> {
+    async changeMovieScreeningInformation(id: number, dateTime: Date): Promise<MovieScreening> {
         let moviescreening: MovieScreening = new MovieScreening();
         moviescreening.setId(id);
         moviescreening.setDatetime(dateTime);
 
+        await DatabaseConnectorImplementation.getSingleton().update(moviescreening, DatabaseObjectType.MovieScreening);
+
         return <Promise<MovieScreening>>(
-            DatabaseConnectorImplementation.getSingleton().update(moviescreening, DatabaseObjectType.MovieScreening)
+            DatabaseConnectorImplementation.getSingleton().get(
+                moviescreening.getId(),
+                DatabaseObjectType.MovieScreening
+            )
         );
     }
 
